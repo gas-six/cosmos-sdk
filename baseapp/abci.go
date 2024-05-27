@@ -121,9 +121,7 @@ func (app *BaseApp) InitChain(req *abci.RequestInitChain) (*abci.ResponseInitCha
 
 		for i := range res.Validators {
 			if !proto.Equal(&res.Validators[i], &req.Validators[i]) {
-				fmt.Errorf("res.Validator[%d]: %+v\n", i, res.Validators[i])
-				fmt.Errorf("req.Validator[%d]: %+v\n", i, req.Validators[i])
-				return nil, fmt.Errorf("gas gas gas gas genesisValidators[%d] != req.Validators[%d] ", i, i)
+				return nil, fmt.Errorf("gas gas gas gas genesisValidators[%d] != req.Validators[%d]  %+v\n :  %+v\n", i, i, res.Validators[i], req.Validators[i])
 			}
 		}
 	}
